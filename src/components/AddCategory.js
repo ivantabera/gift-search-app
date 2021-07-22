@@ -1,8 +1,10 @@
-import React, {useState} from 'react'
+import React, {useState} from 'react';
+import PropTypes from 'prop-types';
 
-export const AddCategory = () => {
+//Se destructuran los argumentos del componente 
+export const AddCategory = ( { setCategories } ) => {
 
-    const [inputValue, setInputValue] = useState('Hola mundo');
+    const [inputValue, setInputValue] = useState('');
 
     const handleInputChange = ( e ) => {
         setInputValue( e.target.value );
@@ -10,6 +12,16 @@ export const AddCategory = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+
+        //Validacion para evitar que el input tenga menos de 2 letras
+        if ( inputValue.trim().length > 2 ) {
+            // mandamos la referencia con el operador de arrastre a setCategories y el texto en el input con la variable (inputValue) para que haga la insercion
+            setCategories( cate => [...cate, inputValue]);
+            // borrar el valor del input para evitar el doble posteo
+            setInputValue('');
+        }
+
+        
     }
 
     return (
@@ -21,4 +33,9 @@ export const AddCategory = () => {
             />
         </form>
     )
+}
+
+
+AddCategory.propTypes = {
+    setCategories: PropTypes.func.isRequired
 }
