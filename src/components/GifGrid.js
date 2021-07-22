@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react'
+import { GigGriditem } from './GigGriditem';
 
 export const GifGrid = ({ category }) => {
 
-    const [count, setCount] = useState(0);
+    const [images, setImages] = useState([]);
 
     // Declaramos la funcion getGif dentro del useEffect() para que solo se ejecute 1 ves cuando cargue la pagina
     // El Hook de efecto te permite llevar a cabo efectos secundarios en componentes funcionales:
@@ -30,6 +31,7 @@ export const GifGrid = ({ category }) => {
             }
         })
         console.log(gifs)
+        setImages(gifs);
     }
 
     // gitGif();
@@ -37,8 +39,14 @@ export const GifGrid = ({ category }) => {
     return (
         <div>
             <h3> { category } </h3>
-            <h2>{count}</h2>
-            <button onClick={ () => setCount( count + 1) }>+</button>
+            {
+                images.map( ( img ) => {
+                    return <GigGriditem 
+                                key = { img.id }
+                                { ...img }
+                            />
+                })
+            };
         </div>
     )
 }
