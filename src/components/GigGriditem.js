@@ -2,7 +2,7 @@ import React from 'react'
 
 export const GigGriditem = ({ title, url }) => {
     return (
-        <div>
+        <div className="card">
             <img src={url} alt={title} />
             <p>{title}</p>
         </div>
