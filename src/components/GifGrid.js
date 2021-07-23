@@ -1,22 +1,19 @@
-import React, { useState, useEffect } from 'react'
-import { getGif } from '../helpers/GetGif';
+import React/* , { useState, useEffect }  */from 'react'
+import { useFetchGifs } from '../hooks/useFetchGifs'
 import { GigGriditem } from './GigGriditem';
+
 
 
 export const GifGrid = ({ category }) => {
 
-    const [images, setImages] = useState([]);
-
-    // Declaramos la funcion getGif dentro del useEffect() para que solo se ejecute 1 ves cuando cargue la pagina
-    // El Hook de efecto te permite llevar a cabo efectos secundarios en componentes funcionales:
-    useEffect( () => {
-        getGif( category ).
-            then( imgs => setImages(imgs));
-    }, [ category ]);
+    const { data: images, loading } =  useFetchGifs(category);
 
     return (
         <>
             <h3> { category } </h3>
+
+            {loading && <p>Cargando...</p>}
+            
             <div className="card-grid">
                 {
                     images.map( ( img ) => {
