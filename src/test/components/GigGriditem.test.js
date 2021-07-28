@@ -1,7 +1,7 @@
 import React from 'react';
-import '../setupTests';
+import '../../setupTests';
 import {shallow} from 'enzyme';
-import { GigGriditem } from '../components/GigGriditem.js';
+import { GigGriditem } from '../../components/GigGriditem.js';
 
 describe('Pruebas en el grid item', () => {
 
