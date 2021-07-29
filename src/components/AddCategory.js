@@ -13,6 +13,8 @@ export const AddCategory = ( { setCategories } ) => {
     const handleSubmit = (e) => {
         e.preventDefault();
 
+        console.log(inputValue)
+
         //Validacion para evitar que el input tenga menos de 2 letras
         if ( inputValue.trim().length > 2 ) {
             // mandamos la referencia con el operador de arrastre a setCategories y el texto en el input con la variable (inputValue) para que haga la insercion

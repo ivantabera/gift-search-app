@@ -7,6 +7,7 @@ import { GigGriditem } from './GigGriditem';
 export const GifGrid = ({ category }) => {
 
     const { data: images, loading } =  useFetchGifs(category);
+    console.log('images', images)
 
     return (
         <>
