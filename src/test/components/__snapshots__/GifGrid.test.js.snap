@@ -32,6 +32,12 @@ exports[`Pruebas en GifGrid Debe de mostrar items cuando se cargan imagentes con
       title="Hola mundo"
       url="https://welcome.com"
     />
+    <GigGriditem
+      id="234"
+      key="234"
+      title="Hola mundo234"
+      url="https://welcome23.com"
+    />
   </div>
 </Fragment>
 `;

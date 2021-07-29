@@ -24,13 +24,21 @@ describe('Pruebas en GifGrid', () => {
             id:'ASB',
             url:'https://welcome.com',
             title:'Hola mundo'
+        },
+        {
+            id:'234',
+            url:'https://welcome23.com',
+            title:'Hola mundo234'
         }]
         useFetchGifs.mockReturnValue({
             data:gifs,
             loading:false
         });
         const wrapper = shallow( <GifGrid category={category} />);
+
         expect( wrapper ).toMatchSnapshot();
+        expect( wrapper.find('p').exists() ).toBe(false);
+        expect( wrapper.find('GigGriditem').length ).toBe(gifs.length);
     })
     
 
